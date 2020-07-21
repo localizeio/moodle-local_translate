@@ -20,7 +20,7 @@ services:
       - '8080:80'
       - '8443:443'
     volumes:
-      - '.:/bitnami/moodle/local/translate'
+      - '.:/bitnami/moodle/local/translate:cached'
     depends_on:
       - mariadb
 volumes:
