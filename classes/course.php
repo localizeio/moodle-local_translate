@@ -678,9 +678,12 @@ class course
         foreach ($this->instances['quiz'] as $quiz) {
             $DB->execute("SET SESSION group_concat_max_len = 1000000");
             $questions = $DB->get_records_sql('select q.*
-                            from {quiz_slots} qs
-                            join {question} q on q.id = qs.questionid
-                            where qs.quizid = :quizid and q.hidden = :hidden', ['quizid' => $quiz->id, 'hidden' => 0]);
+                      from {quiz_slots} qs
+                      join {question_references} qre on qre.itemid = qs.id
+                      join {question_bank_entries} qbe on qbe.id = qre.questionbankentryid
+                      join {question_versions} qve on qve.questionbankentryid = qbe.id
+                      join {question} q on q.id = qve.questionid
+                      where qs.quizid = :quizid', ['quizid' => $quiz->id]);
             $this->instances["quiz"][$quiz->id]->questions = [];
 
             foreach ($questions as $question_item) {
@@ -802,7 +805,7 @@ class course
                     continue;
                 }
                 if (is_array($value)) {
-                    if (isset($value['en']) || isset($value['ru'])) {
+                    if (isset($value['en']) || isset($value['es'])) {
                         $update->$key = $this->setProperty($modname, $instanceid, $key, $value);
                     }
                     if (isset($value[0]) && isset($value[0]['instance'])) {
