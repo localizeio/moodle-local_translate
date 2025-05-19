@@ -1,4 +1,4 @@
-# connect-moodle-plugin
+# moodle-plugin
 
 ## Required Plugins			
 - filter_multilang2
