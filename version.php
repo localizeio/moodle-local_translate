@@ -12,7 +12,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_translate';
 $plugin->release = '0.1.1';
-$plugin->version = 2020021702;
+$plugin->version = 2024051300;
 $plugin->requires = 2019052000;
 $plugin->maturity = MATURITY_ALPHA;
 $plugin->dependencies = array(
