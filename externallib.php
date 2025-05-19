@@ -449,10 +449,10 @@ class local_translate_external extends external_api
         foreach ($array as $item => $value){
             if ($item == 'external_function'){
                 $rs = self::formation_validation($value,$isReturn);
-                return new external_function_parameters($rs,'',VALUE_OPTIONAL);
+                return new external_function_parameters($rs,'',VALUE_OPTIONAL, '');
             }elseif ($item == 'multiple'){
                 $rs = self::formation_validation($value,$isReturn);
-                return new external_multiple_structure($rs,'',VALUE_OPTIONAL);
+                return new external_multiple_structure($rs,'',VALUE_OPTIONAL, 'asdas', NULL_ALLOWED);
             } elseif ($item == 'single'){
                 $rs = self::formation_validation($value,$isReturn);
                 return new external_single_structure($rs,'',VALUE_OPTIONAL);
