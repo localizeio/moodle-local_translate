@@ -1,4 +1,4 @@
-# moodle-plugin
+# Moodle - Local Translate
 
 ## Required Plugins			
 - filter_multilang2
